@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">convert-html-to-pdf-android-app</string>
+    <string name="convert_to_pdf">convert to pdf</string>
 </resources>
