@@ -2,10 +2,17 @@ package com.majedalmoqbeli.html_to_pdf;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
-import android.view.View;
+import android.os.Environment;
 
 import com.majedalmoqbeli.html_to_pdf.databinding.ActivityMainBinding;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -18,7 +25,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.btnConvertToPdf.setOnClickListener(view -> {
-
+            startConverting();
         });
     }
+
+
+    private void startConverting() {
+        PdfConverter converter = PdfConverter.getInstance();
+        String htmlString = "<html><body><p>Hello World</p></body></html>";
+        converter.convert(this, htmlString);
+    }
+
 }
