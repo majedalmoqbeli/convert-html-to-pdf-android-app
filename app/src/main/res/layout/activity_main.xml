@@ -8,11 +8,23 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/edit_text_html_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:hint="@string/input_html_code_here"
+        android:inputType="textMultiLine"
+        android:lineSpacingExtra="3dp"
+        android:maxLines="8"
+        android:padding="12dp" />
+
     <Button
         android:id="@+id/btn_convert_to_pdf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:enabled="false"
         android:text="@string/convert_to_pdf" />
 
 </LinearLayout>
