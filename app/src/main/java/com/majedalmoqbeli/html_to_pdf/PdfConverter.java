@@ -22,20 +22,12 @@ import java.lang.ref.WeakReference;
 public class PdfConverter implements Runnable {
 
 
-    private static WeakReference<PdfConverter> sInstance;
-
     private Context mContext;
     private String mHtmlString;
     private boolean mIsCurrentlyConverting;
 
 
-    private PdfConverter() {
-    }
-
-    public static synchronized WeakReference<PdfConverter> getInstance() {
-        if (sInstance == null)
-            sInstance = new WeakReference<>(new PdfConverter());
-        return sInstance;
+    public PdfConverter() {
     }
 
 
