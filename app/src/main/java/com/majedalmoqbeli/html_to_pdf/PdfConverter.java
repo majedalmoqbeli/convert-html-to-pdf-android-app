@@ -13,11 +13,12 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import java.io.File;
+import java.lang.ref.WeakReference;
 
 public class PdfConverter implements Runnable {
 
 
-    private static PdfConverter sInstance;
+    private static WeakReference<PdfConverter> sInstance;
 
     private Context mContext;
     private String mHtmlString;
@@ -27,10 +28,9 @@ public class PdfConverter implements Runnable {
     private PdfConverter() {
     }
 
-    public static synchronized PdfConverter getInstance() {
+    public static synchronized WeakReference<PdfConverter> getInstance() {
         if (sInstance == null)
-            sInstance = new PdfConverter();
-
+            sInstance = new WeakReference<>(new PdfConverter());
         return sInstance;
     }
 

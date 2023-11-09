@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void startConverting() {
-        PdfConverter converter = PdfConverter.getInstance();
+        PdfConverter converter = PdfConverter.getInstance().get();
         String htmlString = "<html><body><p>Hello World</p></body></html>";
         converter.convert(this, htmlString);
     }
