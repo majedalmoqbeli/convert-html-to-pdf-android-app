@@ -2,6 +2,8 @@ package com.majedalmoqbeli.html_to_pdf;
 
 import android.content.Context;
 import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
 import android.os.ParcelFileDescriptor;
 import android.print.PageRange;
 import android.print.PrintAttributes;
@@ -9,6 +11,8 @@ import android.print.PrintDocumentAdapter;
 import android.print.PrintJob;
 import android.print.PrintManager;
 import android.util.Log;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -23,7 +27,7 @@ public class PdfConverter implements Runnable {
     private Context mContext;
     private String mHtmlString;
     private boolean mIsCurrentlyConverting;
-    private WebView mWebView;
+
 
     private PdfConverter() {
     }
@@ -37,7 +41,7 @@ public class PdfConverter implements Runnable {
 
     @Override
     public void run() {
-        mWebView = new WebView(mContext);
+        WebView mWebView = new WebView(mContext);
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
@@ -78,7 +82,7 @@ public class PdfConverter implements Runnable {
 
 
     private void runOnUiThread(Runnable runnable) {
-        Handler handler = new Handler(mContext.getMainLooper());
+        Handler handler = new Handler(new Handler().getLooper());
         handler.post(runnable);
     }
 
